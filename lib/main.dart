@@ -7,21 +7,22 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
+  // このウィジェットは、あなたのアプリケーションのルートです。
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
+        // これは、アプリケーションのテーマです。
         //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
+        // アプリケーションを「flutter run」で実行してみてください。
+        // アプリケーションのツールバーが青くなっているのがわかると思います。
+        // 次に、アプリケーションを終了せずに、以下のprimarySwatchをColors.greenに変更してから、
+        // 以下のコマンドを実行してみてください。
+        // "hot reload"（"flutter run "を実行したコンソールで "r "を押してください。
+        // または、Flutter IDEで変更を保存して "hot reload "を実行します）。)
+        // カウンターがゼロに戻っていないことに注意してください。
+        // アプリケーションは再起動されていません。
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Flutter Demo Home Page'),
@@ -32,14 +33,12 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key, required this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+  // このウィジェットは，アプリケーションのホーム・ページです。
+  // ステートフルとは、表示方法に影響を与えるフィールドを含むStateオブジェクト（以下に定義）を持つことを意味します。
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+  // このクラスは、ステートの設定です。
+  // 親(ここではAppウィジェット)から提供され、Stateのbuildメソッドで使用される値(ここではタイトル)を保持します。
+  // Widgetサブクラスのフィールドは、常に "final "と表示されます。
 
   final String title;
 
@@ -52,47 +51,47 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      // このsetStateの呼び出しは、Flutterフレームワークに、このStateに何か変更があったことを伝え、
+      // 以下のビルドメソッドを再実行させ、更新された値を表示に反映させます。
+      // setState()を呼び出さずに_counterを変更した場合、
+      // ビルドメソッドは再び呼び出されないので、何も起こらないように見えます。
+      _counter += 2;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
+    // このメソッドは、setStateが呼ばれるたびに再実行されます。
+    // 例えば、上記の_incrementCounterメソッドで行われます。
     //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    // Flutterフレームワークは、ビルドメソッドの再実行を高速化するように最適化されており、
+    // ウィジェットのインスタンスを個別に変更するのではなく、更新が必要なものをすべてリビルドできるようになっています。
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        // ここでは、App.buildメソッドで作成されたMyHomePageオブジェクトから値を取得し、
+        // それを使ってアプリバーのタイトルを設定しています。
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+        // Centerは、レイアウトウィジェットです。
+        // Single childを受け取り、親の中央に配置します。
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
+          // Columnは、レイアウトウィジェットでもあります。
+          // 子のリストを受け取り、それらを垂直に並べます。
+          // デフォルトでは、子の水平方向に合わせてサイズを調整し、親と同じ高さになるようにします。
           //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
+
+          // 「デバッグペイント」を呼び出すと
+          //　（コンソールで「p」を押すか、Android StudioのFlutterインスペクタで「デバッグペイントを切り替える」アクションを選択するか、
+          //　Visual Studio Codeで「デバッグペイントを切り替える」コマンドを実行する）、各ウィジェットのワイヤフレームが表示されます。
+          // このsetStateの呼び出しは、Flutterフレームワークに、このStateに何か変更があったことを伝え、
+          // 以下のビルドメソッドを再実行させ、更新された値を表示に反映させます。setState()を呼び出さずに_counterを変更した場合、
+          // ビルドメソッドは再び呼び出されないので、何も起こらないように見えます。
+
           //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
+          // Columnには、自身のサイズや子の配置を制御する様々なプロパティがあります。
+          // ここでは、mainAxisAlignmentを使用して、子を垂直方向に中央に配置しています。
+          // Columnは垂直方向に配置されるので、ここでの主な軸は垂直軸です（交差軸は水平方向になります）。
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
@@ -109,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
         onPressed: _incrementCounter,
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ), // この末尾のコンマは、ビルドメソッドの自動フォーマットをより良いものにします。
     );
   }
 }
