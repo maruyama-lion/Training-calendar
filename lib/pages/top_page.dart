@@ -47,7 +47,7 @@ class _TopPageState extends State<TopPage> {
             flex: 2,
           ),
           const SizedBox(height: 8),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: TextField(
                 controller: categoryController,
@@ -55,7 +55,7 @@ class _TopPageState extends State<TopPage> {
                 // 最大文字数
                 maxLength: 10),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: TextField(
                 controller: textController,
@@ -66,7 +66,7 @@ class _TopPageState extends State<TopPage> {
           const Spacer(
             flex: 1,
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: Column(
               children: <Widget>[
@@ -76,7 +76,7 @@ class _TopPageState extends State<TopPage> {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.8,
             child: Column(
               children: <Widget>[
@@ -110,7 +110,7 @@ class _TopPageState extends State<TopPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => NewPage(),
+                  builder: (context) => const NewPage(),
                 ),
               );
             },

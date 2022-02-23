@@ -1,8 +1,7 @@
-// ignore_for_file: avoid_function_literals_in_foreach_calls, use_key_in_widget_constructors
+// ignore_for_file: avoid_function_literals_in_foreach_calls, use_key_in_widget_constructors, prefer_const_constructors_in_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:training_calendar/pages/memo_page.dart';
 
 class EditPage extends StatefulWidget {
   late final QueryDocumentSnapshot memo;
@@ -61,7 +60,7 @@ class _EditPageState extends State<EditPage> {
                 flex: 2,
               ),
               const SizedBox(height: 8),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextField(
                     controller: categoryController,
@@ -69,7 +68,7 @@ class _EditPageState extends State<EditPage> {
                     // 最大文字数
                     maxLength: 10),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: TextField(
                     controller: textController,
@@ -80,7 +79,7 @@ class _EditPageState extends State<EditPage> {
               const Spacer(
                 flex: 1,
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Column(
                   children: <Widget>[
@@ -90,7 +89,7 @@ class _EditPageState extends State<EditPage> {
                   ],
                 ),
               ),
-              Container(
+              SizedBox(
                 width: MediaQuery.of(context).size.width * 0.8,
                 child: Column(
                   children: <Widget>[
@@ -121,7 +120,7 @@ class _EditPageState extends State<EditPage> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => NewPage(),
+                      builder: (context) => const NewPage(),
                     ),
                   );
                 },

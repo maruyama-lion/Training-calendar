@@ -1,5 +1,6 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, avoid_function_literals_in_foreach_calls
 
+// ignore: unused_import
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     // ページ2の画面
     const Page2(),
     // ページ3の画面
-    MemoPage(),
+    const MemoPage(),
     // ページ4の画面
     Page4(),
   ];
@@ -373,6 +374,8 @@ class _Page2State extends State<Page2> {
 }
 
 class Page3 extends StatelessWidget {
+  const Page3({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const Text(
@@ -382,6 +385,8 @@ class Page3 extends StatelessWidget {
 }
 
 class Page4 extends StatelessWidget {
+  const Page4({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return const Text(
