@@ -13,6 +13,13 @@ import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
+// カレンダーのためのimport
+import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
+    show CalendarCarousel;
+import 'package:flutter_calendar_carousel/classes/event.dart';
+import 'package:flutter_calendar_carousel/classes/event_list.dart';
+import 'package:intl/intl.dart' show DateFormat;
+
 // 最初にMyAppを実行する
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +63,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     // ページ1の画面
     const TopPage(),
     // ページ2の画面
-    // Page2(),
+    const Page2(),
     // ページ3の画面
     MemoPage(),
     // ページ4の画面
