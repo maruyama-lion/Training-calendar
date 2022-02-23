@@ -1,9 +1,17 @@
 // ignore_for_file: avoid_print
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:training_calendar/pages/top_page.dart';
+import 'package:training_calendar/pages/memo_page.dart';
 
 // 最初にMyAppを実行する
-void main() => runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(const MyApp());
+}
 
 // 初期設定
 class MyApp extends StatelessWidget {
@@ -39,11 +47,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
 
   static final List<Widget> _widgetOptions = <Widget>[
     // ページ1の画面
-    const Page1(),
+    const TopPage(),
     // ページ2の画面
-    Page2(),
+    // Page2(),
     // ページ3の画面
-    Page3(),
+    MemoPage(),
     // ページ4の画面
     Page4(),
   ];
@@ -98,135 +106,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   }
 }
 
-class Page1 extends StatefulWidget {
-  const Page1({Key? key}) : super(key: key);
-
-  @override
-  _Page1State createState() => _Page1State();
-}
-
-// （ページ1）左ページ
-class _Page1State extends State<Page1> {
-  // テキストフィールドを管理するコントローラを作成
-  // 入力された内容をこのコントローラを使用して取り出します。
-  final textfieldsController = TextEditingController();
-
-  final List<String> _textList = [];
-  String _text = '';
-
-  @override
-  // widgetの破棄時にコントローラも破棄する
-  void dispose() {
-    textfieldsController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    var _size = MediaQuery.of(context).size;
-
-    void _handleText(String e) {
-      print("call _handleText");
-      print("_text = $_text");
-      // ignore: prefer_is_empty
-      if ((e.length > 0)) {
-        // 入力値があるなら、それを反映する。
-        setState(() {
-          _text = e;
-        });
-      } else {
-        setState(() {
-          _text = '';
-        });
-      }
-    }
-
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        // ignore: prefer_const_literals_to_create_immutables
-        children: <Widget>[
-          const Spacer(
-            flex: 2,
-          ),
-          Text("_text = $_textList"),
-          Text("_text = $_text"),
-          const SizedBox(height: 8),
-          Form(
-            child: TextField(
-                controller: textfieldsController,
-                decoration: const InputDecoration(labelText: 'カテゴリー'),
-                // 最大文字数
-                maxLength: 10,
-                onChanged: _handleText),
-          ),
-          const Spacer(
-            flex: 1,
-          ),
-          Form(
-            child: Column(
-              children: <Widget>[
-                TextFormField(
-                  decoration: const InputDecoration(labelText: '重量or距離'),
-                ),
-                TextFormField(
-                  decoration: const InputDecoration(labelText: '回数or時間'),
-                ),
-              ],
-            ),
-          ),
-          const Spacer(
-            flex: 1,
-          ),
-          ElevatedButton(
-            onPressed: () {
-              setState(() {
-                _textList.add(_text);
-                _text = '';
-                textfieldsController.clear();
-              });
-            },
-            child: const Text('保存'),
-            style: ElevatedButton.styleFrom(
-                fixedSize: Size(_size.width * 0.7, _size.height * 0.05)),
-          ),
-          ElevatedButton(
-            child: const Text(
-              'ページ3へ',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => NewPage(),
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              fixedSize: Size(_size.width * 0.7, _size.height * 0.05),
-              primary: Colors.orange,
-            ),
-          ),
-          const Spacer(
-            flex: 6,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-// （ページ2）右ページ
-class Page2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const Text(
-      'ページ2',
-    );
-  }
-}
-
 class Page3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -241,26 +120,6 @@ class Page4 extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Text(
       'ページ4',
-    );
-  }
-}
-
-// ページ3（遷移するページ）
-class NewPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("ページ3"),
-      ),
-      body: Center(
-        child: RaisedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('戻る'),
-        ),
-      ),
     );
   }
 }
