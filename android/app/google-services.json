@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "775720838521",
+    "project_id": "muscle-training-calendar",
+    "storage_bucket": "muscle-training-calendar.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:775720838521:android:40b191cb492d4613d2bba8",
+        "android_client_info": {
+          "package_name": "com.example.training_calendar"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "775720838521-uj6174sgft8incq5ejqor8f2t7vkq3qe.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDojVDaxtmymFDuPhhS-mn71mbhUlA1IJA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "775720838521-uj6174sgft8incq5ejqor8f2t7vkq3qe.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "775720838521-h59r8um6lim940egh6ndjr11lalcg40m.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.trainingCalendar"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
