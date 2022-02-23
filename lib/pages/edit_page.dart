@@ -4,8 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class EditPage extends StatefulWidget {
-  late final QueryDocumentSnapshot memo;
-  EditPage({required this.memo});
+  late final QueryDocumentSnapshot report;
+  EditPage({required this.report});
 
   @override
   _EditPageState createState() => _EditPageState();
@@ -18,12 +18,12 @@ class _EditPageState extends State<EditPage> {
   final textController = TextEditingController();
   final categoryController = TextEditingController();
 
-  Future<void> updateMemo() async {
+  Future<void> updateReport() async {
     var document =
-        FirebaseFirestore.instance.collection('memo').doc(widget.memo.id);
+        FirebaseFirestore.instance.collection('report').doc(widget.report.id);
     await document.update({
       'category': categoryController.text,
-      'text': textController.text,
+      // 'text': textController.text,
       // 'created_data': Timestamp.now(),
     });
   }
@@ -31,8 +31,8 @@ class _EditPageState extends State<EditPage> {
   @override
   void initState() {
     super.initState();
-    textController.text = (widget.memo.data() as Map)['text'];
-    categoryController.text = (widget.memo.data() as Map)['category'];
+    categoryController.text = (widget.report.data() as Map)['category'];
+    // textController.text = (widget.report.data() as Map)['text'];
   }
 
   @override
@@ -49,7 +49,7 @@ class _EditPageState extends State<EditPage> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text((widget.memo.data() as Map)['text']),
+          title: Text((widget.report.data() as Map)['category']),
         ),
         body: Center(
           child: Column(
@@ -104,7 +104,7 @@ class _EditPageState extends State<EditPage> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  await updateMemo();
+                  await updateReport();
                   Navigator.pop(context);
                 },
                 child: const Text('保存'),

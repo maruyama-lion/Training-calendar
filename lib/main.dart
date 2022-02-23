@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:training_calendar/pages/top_page.dart';
-import 'package:training_calendar/pages/memo_page.dart';
+import 'package:training_calendar/pages/report_page.dart';
 
 // カレンダーのためのimport
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -59,7 +59,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     // ページ2の画面
     const Page2(),
     // ページ3の画面
-    const MemoPage(),
+    const ReportPage(),
     // ページ4の画面
     Page4(),
   ];

@@ -4,14 +4,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class SeePage extends StatelessWidget {
-  QueryDocumentSnapshot memo;
-  SeePage(this.memo);
+  QueryDocumentSnapshot report;
+  SeePage(this.report);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text((memo.data() as Map)['text']),
+        title: Text((report.data() as Map)['category']),
       ),
       body: Center(
         child: Column(
@@ -21,7 +21,7 @@ class SeePage extends StatelessWidget {
               'メモの内容',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            Text((memo.data() as Map)['text'],
+            Text((report.data() as Map)['category'],
                 style: const TextStyle(fontSize: 18)),
           ],
         ),
