@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
@@ -22,7 +23,8 @@ class _TopPageState extends State<TopPage> {
     collection.add({
       'category': categoryController.text,
       // 'text': textController.text,
-      // 'created_data': Timestamp.now(),
+      'date': DateFormat('yyyy年M月d日').format(DateTime.now()),
+      'created_date': DateTime.now(),
     });
   }
 

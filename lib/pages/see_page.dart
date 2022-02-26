@@ -23,6 +23,8 @@ class SeePage extends StatelessWidget {
             ),
             Text((report.data() as Map)['category'],
                 style: const TextStyle(fontSize: 18)),
+            Text((report.data() as Map)['date'],
+                style: const TextStyle(fontSize: 18)),
           ],
         ),
       ),

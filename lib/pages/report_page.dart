@@ -2,8 +2,11 @@
 
 // import 'dart:html';
 
+// import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:training_calendar/pages/add_page.dart';
 import 'package:training_calendar/pages/edit_page.dart';
 import 'package:training_calendar/pages/see_page.dart';
 
@@ -38,7 +41,24 @@ class _ReportPageState extends State<ReportPage> {
                 return CircularProgressIndicator();
               }
               if (snapshot.data!.docs.isEmpty) {
-                return Text('登録されてる記録はありません。');
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('登録されてる記録はありません。'),
+                    ElevatedButton(
+                      child: Text('report追加'),
+                      onPressed: () {
+                        // 押したら反応するコードを書く
+                        // 画面遷移のコード
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddPage(),
+                            ));
+                      },
+                    ),
+                  ],
+                );
               }
               return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
