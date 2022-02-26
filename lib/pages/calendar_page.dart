@@ -10,15 +10,15 @@ import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 import 'package:intl/intl.dart' show DateFormat;
 
-class CalenderPage extends StatefulWidget {
-  const CalenderPage({Key? key}) : super(key: key);
+class CalendarPage extends StatefulWidget {
+  const CalendarPage({Key? key}) : super(key: key);
 
   @override
   _CalenderPageState createState() => _CalenderPageState();
 }
 
 // （ページ2）右ページ
-class _CalenderPageState extends State<CalenderPage> {
+class _CalenderPageState extends State<CalendarPage> {
   final DateTime _currentDate = DateTime(2019, 2, 3);
   DateTime _currentDate2 = DateTime(2019, 2, 3);
   String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
