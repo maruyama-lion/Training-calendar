@@ -2,47 +2,70 @@
 
 // import 'dart:html';
 
+// import 'dart:html';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:training_calendar/pages/add_page.dart';
 import 'package:training_calendar/pages/edit_page.dart';
 import 'package:training_calendar/pages/see_page.dart';
 
-class MemoPage extends StatefulWidget {
-  const MemoPage({Key? key}) : super(key: key);
+class ReportPage extends StatefulWidget {
+  const ReportPage({Key? key}) : super(key: key);
 
   @override
-  _MemoPageState createState() => _MemoPageState();
+  _ReportPageState createState() => _ReportPageState();
 }
 
-class _MemoPageState extends State<MemoPage> {
-  late CollectionReference memos;
+class _ReportPageState extends State<ReportPage> {
+  late CollectionReference reports;
 
-  Future<void> deleteMemo(String docId) async {
-    var document = FirebaseFirestore.instance.collection('memo').doc(docId);
+  Future<void> deleteReport(String docId) async {
+    var document = FirebaseFirestore.instance.collection('report').doc(docId);
     await document.delete();
   }
 
   @override
   void initState() {
     super.initState();
-    memos = FirebaseFirestore.instance.collection('memo');
+    reports = FirebaseFirestore.instance.collection('report');
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
         child: StreamBuilder<QuerySnapshot>(
-            stream: memos.snapshots(),
+            stream: reports.snapshots(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return CircularProgressIndicator();
+              }
+              if (snapshot.data!.docs.isEmpty) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text('登録されてる記録はありません。'),
+                    ElevatedButton(
+                      child: Text('report追加'),
+                      onPressed: () {
+                        // 押したら反応するコードを書く
+                        // 画面遷移のコード
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AddPage(),
+                            ));
+                      },
+                    ),
+                  ],
+                );
               }
               return ListView.builder(
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
                   return ListTile(
                     title: Text(
-                        (snapshot.data!.docs[index].data() as Map)['text']),
+                        (snapshot.data!.docs[index].data() as Map)['category']),
                     trailing: IconButton(
                       icon: Icon(Icons.edit),
                       onPressed: () {
@@ -65,7 +88,7 @@ class _MemoPageState extends State<MemoPage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: ((context) => EditPage(
-                                                    memo: snapshot
+                                                    report: snapshot
                                                         .data!.docs[index]))));
                                       },
                                     ),
@@ -76,7 +99,7 @@ class _MemoPageState extends State<MemoPage> {
                                       ),
                                       title: Text('削除'),
                                       onTap: () async {
-                                        await deleteMemo(
+                                        await deleteReport(
                                             snapshot.data!.docs[index].id);
                                         Navigator.pop(context);
                                       },

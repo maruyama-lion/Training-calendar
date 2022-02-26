@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TopPage extends StatefulWidget {
   const TopPage({Key? key}) : super(key: key);
@@ -17,12 +18,13 @@ class _TopPageState extends State<TopPage> {
   final textController = TextEditingController();
   final categoryController = TextEditingController();
 
-  Future<void> addMemo() async {
-    var collection = FirebaseFirestore.instance.collection('memo');
+  Future<void> addReport() async {
+    var collection = FirebaseFirestore.instance.collection('report');
     collection.add({
       'category': categoryController.text,
-      'text': textController.text,
-      // 'created_data': Timestamp.now(),
+      // 'text': textController.text,
+      'date': DateFormat('yyyy年M月d日').format(DateTime.now()),
+      'created_date': DateTime.now(),
     });
   }
 
@@ -92,7 +94,7 @@ class _TopPageState extends State<TopPage> {
           ElevatedButton(
             onPressed: () {
               setState(() {
-                addMemo();
+                addReport();
                 categoryController.clear();
                 textController.clear();
               });
@@ -101,50 +103,10 @@ class _TopPageState extends State<TopPage> {
             style: ElevatedButton.styleFrom(
                 fixedSize: Size(_size.width * 0.8, _size.height * 0.05)),
           ),
-          ElevatedButton(
-            child: const Text(
-              'ページ3へ',
-              style: TextStyle(color: Colors.white),
-            ),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const NewPage(),
-                ),
-              );
-            },
-            style: ElevatedButton.styleFrom(
-              fixedSize: Size(_size.width * 0.8, _size.height * 0.05),
-              primary: Colors.orange,
-            ),
-          ),
           const Spacer(
             flex: 6,
           ),
         ],
-      ),
-    );
-  }
-}
-
-// ページ3（遷移するページ）
-class NewPage extends StatelessWidget {
-  const NewPage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("ページ3"),
-      ),
-      body: Center(
-        child: TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('戻る'),
-        ),
       ),
     );
   }
