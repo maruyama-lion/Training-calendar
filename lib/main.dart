@@ -4,6 +4,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:training_calendar/pages/calendar_page.dart';
 import 'package:training_calendar/pages/top_page.dart';
 import 'package:training_calendar/pages/report_page.dart';
@@ -19,7 +20,8 @@ import 'package:training_calendar/pages/report_page.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  initializeDateFormatting().then((_) => runApp(const MyApp()));
+  // runApp(const MyApp());
 }
 
 // 初期設定
@@ -58,11 +60,11 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
     // ページ1の画面
     const TopPage(),
     // ページ2の画面
-    CalendarPage(),
+    const CalendarPage(),
     // ページ3の画面
     const ReportPage(),
     // ページ4の画面
-    Page4(),
+    const Page4(),
   ];
 
   void _onItemTapped(int index) {
